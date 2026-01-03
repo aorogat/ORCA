@@ -8,9 +8,11 @@
 
 MAS-Automation is an intelligent framework that transforms natural language descriptions into fully-specified multi-agent systems. Design complex agent architectures through simple conversation—no manual configuration required.
 
-<p align="center">
+<!-- <p align="center">
   <img src="https://raw.githubusercontent.com/aorogat/multi-agent-automation/main/images/arch.jpg" alt="MAS-Automation Architecture" width="800"/>
-</p>
+</p> -->
+
+![MAS Automation Demo](https://raw.githubusercontent.com/aorogat/multi-agent-automation/main/images/Automation.gif)
 
 ---
 
@@ -22,9 +24,6 @@ MAS-Automation is an intelligent framework that transforms natural language desc
 - **🎯 Framework Agnostic** - Supports multiple MAS frameworks (LangGraph, CrewAI, Concordia)
 - **📝 Automatic Specification** - Generates comprehensive system specifications with agents, tools, topology, and constraints
 - **🎨 Modern UI** - Clean, professional interface built with NiceGUI and Cytoscape.js
-
-
-![MAS Automation Demo](https://raw.githubusercontent.com/aorogat/multi-agent-automation/main/images/Automation.gif)
 
 
 ---
