@@ -12,9 +12,9 @@ MAS-Automation is an intelligent framework that transforms natural language desc
   <img src="https://raw.githubusercontent.com/aorogat/multi-agent-automation/main/images/arch.jpg" alt="MAS-Automation Architecture" width="800"/>
 </p> -->
 
-<p align="center">
+<!-- <p align="center">
   <img src="https://raw.githubusercontent.com/aorogat/multi-agent-automation/main/images/slogan.png" alt="MAS-Automation Architecture" width="800"/>
-</p>
+</p> -->
 
 ![MAS Automation Demo](https://raw.githubusercontent.com/aorogat/multi-agent-automation/main/images/Automation.gif)
 
