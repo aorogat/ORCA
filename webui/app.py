@@ -238,20 +238,20 @@ with ui.column().classes(
         """Generate guidance report (PDF and JSON) from current specification."""
         global thinking_indicator
         
-        # Show thinking indicator
-        add_thinking_message()
-        thinking_indicator_text = "Generating guidance report..."
+        # Show thinking indicator with guidance-specific message
         if thinking_indicator:
-            # Update the thinking message
+            thinking_indicator.delete()
+        with chat_container:
+            thinking_indicator = ui.row().classes('w-full justify-start items-start gap-2')
             with thinking_indicator:
-                thinking_indicator.clear()
                 ui.icon('description', size='18px').classes('text-green-600 mt-1')
                 with ui.card().classes(
                     'max-w-[70%] bg-green-100 border border-green-200 shadow-sm p-2 rounded-lg text-xs'
                 ):
                     with ui.row().classes('items-center gap-2'):
                         ui.spinner(size='xs', color='green')
-                        ui.label(thinking_indicator_text).classes('text-green-800')
+                        ui.label('Generating guidance report... This may take a few minutes.').classes('text-green-800')
+        chat_scroll.scroll_to(pixels=999999)
         
         try:
             async with httpx.AsyncClient(timeout=httpx.Timeout(300.0)) as client_http:  # 5 min timeout for guidance generation
@@ -276,15 +276,17 @@ with ui.column().classes(
                             ui.label("✅ Guidance report generated successfully!").classes('text-green-800 font-bold mb-2')
                             with ui.column().classes('gap-1 mt-2'):
                                 if json_url:
+                                    # json_url is already just the filename from backend
                                     ui.link(
                                         '📄 Download JSON Report',
-                                        f"{DOWNLOAD_BASE_URL}/{json_url.split('/')[-1]}",
+                                        f"{DOWNLOAD_BASE_URL}/{json_url}",
                                         new_tab=True
                                     ).classes('text-blue-600 hover:text-blue-800 text-xs')
                                 if pdf_url:
+                                    # pdf_url is already just the filename from backend
                                     ui.link(
                                         '📑 Download PDF Report',
-                                        f"{DOWNLOAD_BASE_URL}/{pdf_url.split('/')[-1]}",
+                                        f"{DOWNLOAD_BASE_URL}/{pdf_url}",
                                         new_tab=True
                                     ).classes('text-blue-600 hover:text-blue-800 text-xs')
                 

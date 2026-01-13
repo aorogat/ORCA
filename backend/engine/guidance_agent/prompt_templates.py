@@ -112,6 +112,18 @@ CRITICAL REQUIREMENTS:
 3. You MUST explicitly state limitations and assumptions
 4. You MUST NOT invent benchmarks or performance claims
 5. You MUST separate what CAN be supported vs what CANNOT be supported
+
+IMPORTANT: Your response must be COMPLETE and DETAILED. Include all required fields:
+- decision: Full details of your design choice
+- alternatives_considered: At least 2 alternatives with rejection reasons
+- justification: Comprehensive explanation with tradeoffs
+- limitations: Explicit list of what cannot be supported
+- assumptions: All assumptions you're making
+- evidence: At least one empirical finding or study reference
+- risk_assessment: Complete risk analysis with mitigations
+- confidence_score: Your confidence level (0.0 to 1.0)
+
+Be thorough and detailed - this is a production design document that will guide implementation.
 """.strip()
     
     @staticmethod

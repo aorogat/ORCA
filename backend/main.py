@@ -90,8 +90,8 @@ async def generate_guidance():
             message="Guidance report generated successfully!",
             json_path=json_path,
             pdf_path=pdf_path,
-            json_url=json_url,
-            pdf_url=pdf_url
+            json_url=json_filename,  # Just the filename
+            pdf_url=pdf_filename      # Just the filename
         )
         
     except Exception as e:

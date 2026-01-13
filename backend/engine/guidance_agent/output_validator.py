@@ -35,13 +35,14 @@ class OutputValidator:
     
     VALID_RISK_LEVELS = ["low", "medium", "high"]
     
-    def __init__(self, strict_mode: bool = True):
+    def __init__(self, strict_mode: bool = False):
         """
         Initialize the validator.
         
         Args:
             strict_mode: If True, rejects outputs missing required fields.
                         If False, attempts to fix missing fields.
+                        Default is False to be more lenient with LLM outputs.
         """
         self.strict_mode = strict_mode
     

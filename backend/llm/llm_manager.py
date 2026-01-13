@@ -62,16 +62,33 @@ class LLM:
     # JSON OUTPUT UTILITY
     # ---------------------------------------------------------
     @staticmethod
-    def generate_json(prompt: str) -> dict:
+    def generate_json(prompt: str, max_tokens: int = None) -> dict:
         """
         Prompts the model and tries to parse the output as JSON.
         Automatically strips markdown fences like ```json and ```.
+
+        Args:
+            prompt: The prompt to send to the LLM
+            max_tokens: Optional max tokens override. If None, uses LLM.max_tokens
 
         Returns:
             dict: Parsed JSON object
                   or {"raw_output": "..."} on failure
         """
-        raw = LLM.generate(prompt).strip()
+        # Use provided max_tokens or fall back to class default
+        tokens_to_use = max_tokens if max_tokens is not None else LLM.max_tokens
+        
+        # Temporarily override max_tokens if needed
+        original_max_tokens = LLM.max_tokens
+        if max_tokens is not None:
+            LLM.max_tokens = max_tokens
+        
+        try:
+            raw = LLM.generate(prompt).strip()
+        finally:
+            # Restore original max_tokens
+            if max_tokens is not None:
+                LLM.max_tokens = original_max_tokens
 
         # ---------------------------------------------------------
         # Remove Markdown fences: ```json ... ``` or ``` ... ```

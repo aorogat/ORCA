@@ -5,6 +5,7 @@ This module coordinates the sequential execution of all 9 design prompts,
 collects responses from the LLM, and structures them into a comprehensive
 design report.
 """
+import os
 from typing import Any, Dict, List, Optional
 
 from backend.engine.guidance_agent.prompt_templates import PromptTemplates
@@ -22,16 +23,19 @@ class DesignSynthesizer:
     building a comprehensive design report.
     """
     
-    def __init__(self, strict_validation: bool = True):
+    def __init__(self, strict_validation: bool = False):
         """
         Initialize the design synthesizer.
         
         Args:
             strict_validation: If True, rejects invalid outputs. If False, attempts to fix them.
+                              Default is False to be more lenient with LLM outputs.
         """
         self.prompts = PromptTemplates()
         self.validator = OutputValidator(strict_mode=strict_validation)
         self.framework_comparison = FrameworkComparison()
+        # Guidance agent needs much more tokens for detailed responses
+        self.guidance_max_tokens = int(os.getenv("GUIDANCE_MAX_TOKENS", "4000"))
     
     def synthesize_design(
         self,
@@ -79,8 +83,9 @@ class DesignSynthesizer:
                 debug(f"Executing prompt: {section_name}")
                 prompt = prompt_func(requirements_spec)
                 
-                # Call LLM
-                response = LLM.generate_json(prompt)
+                # Call LLM with increased token limit for guidance generation
+                # Guidance responses need to be detailed and comprehensive
+                response = LLM.generate_json(prompt, max_tokens=self.guidance_max_tokens)
                 debug(f"Response for {section_name}: {response}")
                 
                 # Handle case where JSON parsing failed
