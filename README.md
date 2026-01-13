@@ -1,4 +1,4 @@
-# MAS-Automation
+# ORCA
 
 **Automated Specification and Visualization of Multi-Agent Systems**
 
@@ -8,11 +8,11 @@
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-green.svg)](https://fastapi.tiangolo.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-MAS-Automation converts natural-language requirements into structured multi-agent system specifications. The system supports specification of agent roles, communication topologies, tools, constraints, and execution parameters. It is intended for design exploration, analysis, and prototyping of multi-agent architectures.
+ORCA converts natural-language requirements into structured multi-agent system specifications. The system supports specification of agent roles, communication topologies, tools, constraints, and execution parameters. It is intended for design exploration, analysis, and prototyping of multi-agent architectures.
 
 The system focuses on design-time automation: specification generation, requirement elicitation, and visualization. It does not provide execution, training, or deployment capabilities.
 
-![MAS Automation Demo](https://raw.githubusercontent.com/aorogat/multi-agent-automation/main/images/Automation.gif)
+![ORCA Demo](https://raw.githubusercontent.com/aorogat/multi-agent-automation/main/images/Automation.gif)
 
 *Interactive design and visualization interface (demonstration).*
 
@@ -39,8 +39,8 @@ The system focuses on design-time automation: specification generation, requirem
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/mas-automation.git
-   cd mas-automation
+   git clone https://github.com/yourusername/orca.git
+   cd orca
    ```
 
 2. **Install dependencies**
@@ -99,7 +99,7 @@ python webui/app.py
 The system consists of a backend specification engine and a frontend interaction interface. The backend processes natural-language input, maintains the current specification state, and generates graph visualizations. The frontend provides the interaction interface and displays the specification and visualization.
 
 ```
-mas-automation/
+orca/
 ├── backend/
 │   ├── main.py                      # FastAPI application entry point
 │   ├── engine/
@@ -212,4 +212,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-Project Link: [https://github.com/yourusername/mas-automation](https://github.com/yourusername/mas-automation)
+Project Link: [https://github.com/yourusername/orca](https://github.com/yourusername/orca)
